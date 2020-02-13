@@ -6,7 +6,7 @@ class Pokedex extends Component {
     render() {
       return (
         <div className="pokedex">
-          <img src={titulo} alt=""/>
+          <img src={titulo} alt="" onClick={this.props.evento}/>
         </div>
       );
     }

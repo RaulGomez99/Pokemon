@@ -1,47 +1,46 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 import '../App.css';
 import PokemonEnLista from './PokemonEnLista'
 
-class Busqueda extends Component {
-    constructor(props){
-      super(props);
-      this.state = {results:[{}],showResults:[{}]}
-      this.texto="";
+  const Busqueda = (props) =>{
+    const [results, setResults] = useState([]);
+    const [showResults, setShowResults] = useState([]);
+    const [texto,setTexto] = null;
+
+    const filtroMostrar = (text)=>{
+     setTexto(text);
+     console.log(results)
+      let results = Object.assign([],results.results)
+      results = results.filter(filtroPokemon);
+      //setShowResults([])
+      setTimeout(()=>setShowResults(results),1)
     }
-    async componentDidMount(){
+
+    const filtroPokemon =(poke)=>{
+      if(!texto || texto.length<=2) return false;
+      if(poke.name.indexOf(texto)!==-1)console.log(poke)
+      return poke.name.indexOf(texto)!==-1;
+    }
+
+    useEffect(async()=>{
+      //if(results!==null) return;
       const response = await fetch("https://pokeapi.co/api/v2/pokemon?limit=964");
       const json = await response.json();
-      this.setState({results:json,showResults:[]});
-    }
-    ponerPokemon(url){
-      return (<PokemonEnLista onclick={this.props.onclick} pokemon={url} />)
-    }
-    filtroPokemon =(poke)=>{
-        if(!this.texto || this.texto.length<=2) return false;
-        if(poke.name.indexOf(this.texto)!==-1)console.log(poke)
-        return poke.name.indexOf(this.texto)!==-1;
-    }
-    filtroMostrar = ()=>{
-        let results = Object.assign([],this.state.results.results)
-        results = results.filter(this.filtroPokemon);
-        this.setState({showResults:[]})
-        console.log(this.state)
-        setTimeout(()=>this.setState({showResults:results}),1)
-    }
-    render() {
-      return (
-        <div className="busqueda">
+      setResults({results:json});
+    },[]) 
+
+    return (
+      <div className="busqueda">
           <input type="text" placeholder="Nombre de Pokémon" onKeyUp={(ev)=>{
-            this.texto = ev.target.value;
-            this.filtroMostrar();
+            filtroMostrar(ev.target.value);
           }} />
           {
-          this.state.showResults.map(resp=>{
-            return (<PokemonEnLista onclick={this.props.onclick} pokemon={resp.url} />)
-          })}
+          // showResults.map(resp=>{
+          //   return (<PokemonEnLista onclick={props.onclick} pokemon={resp.url} />)
+          // })
+        }
         </div>
-      );
-    }
+    )
   }
 
   module.exports = Busqueda;

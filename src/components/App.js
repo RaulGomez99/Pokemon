@@ -1,32 +1,32 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import '../App.css';
 import Pokedex from './Pokedex'
 import Busqueda from './Busqueda'
 import PokemonDetalles from './PokemonDetalles'
 
+const App = ()=> {
+  //Estados
+  const [pokemon, setPokemon] = useState(null);
+  const [mostrarPokemon, setMostrarPokemon] = useState(true);
 
-class App extends Component {
-  constructor(props){
-    super(props);
-    this.state = {mosttrarPokemon:true,pokemon:null}
-    
+  //Funciones
+  const onclick = (pokemon)=>{
+    setMostrarPokemon(!mostrarPokemon);
+    setPokemon(pokemon);
   }
-  onclick = (pokemon)=>{
-    this.setState({mosttrarPokemon:!this.state.mosttrarPokemon,pokemon:pokemon})
-    console.log(pokemon)
-  }
-  render() {
-    return (
-      <div>
-        <Pokedex />
-        {
-        this.state.mosttrarPokemon ? <Busqueda onclick={this.onclick}/> : <PokemonDetalles onclick={this.onclick} pokemon={this.state.pokemon}/>
 
-        }
-      </div>
-    );
+  const onclickVuelta = ()=>{
+    setMostrarPokemon(true);
   }
+
+  return (
+    <div>
+      <Pokedex evento={onclickVuelta}/>
+      {mostrarPokemon ? <Busqueda onclick={onclick}/> 
+          : <PokemonDetalles onclick={onclick} pokemon={pokemon}/>
+      }
+    </div>
+  )
 }
-
 
 export default App;
