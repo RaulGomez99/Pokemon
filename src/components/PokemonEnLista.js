@@ -1,28 +1,24 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 import '../App.css';
 
-class PokemonEnLista extends Component{
-    async componentWillMount(){
-      const response = await fetch(this.props.pokemon);
+const PokemonEnLista = (props) => {
+  const [pokemon,setPokemon] = useState({name:"",sprites:{front_default:""}});
+     useEffect(async()=>{
+      const response = await fetch(props.pokemon);
       const json = await response.json();
-      this.setState(json);
+      setPokemon(json);
+    },[])
+
+    const onclick =()=>{
+      props.onclick(pokemon)
     }
-    constructor(props){
-      super(props);
-      this.state = {sprites:[]}
+
+    return(
+      <div className="pokeItem" key={pokemon.name} onClick={onclick}>
+          <span>{pokemon.name}</span><img className="pokeFotoBusc" src={pokemon.sprites.front_default} alt=""/>
+      </div>
       
-    }
-    onclick =()=>{
-      this.props.onclick(this.state)
-    }
-    render(){
-      return(
-        <div className="pokeItem" key={this.state.name} onClick={this.onclick}>
-            <span>{this.state.name}</span><img className="pokeFotoBusc" src={this.state.sprites.front_default} alt=""/>
-        </div>
-        
-      );
-    }
+    );
   }
 
   module.exports = PokemonEnLista;

@@ -1,25 +1,24 @@
-import React, { Component } from 'react';
+import React from 'react';
 import '../App.css';
 
-class Pokedex extends Component {
-    render() {
+const PokemonDetalles = (props)=> {
       return (
         <div className="detallePokemon">
-            {console.log(this.props)}
-          <div className="imagen"><img src={this.props.pokemon.sprites.front_default} onClick={this.props.onclick} alt="" /></div>
-          <div className="nombre">{this.props.pokemon.name}</div>
-          <div className="alturaPeso">Altura={this.props.pokemon.height} Peso={this.props.pokemon.weight}</div>
-          <div className="tipos">{this.props.pokemon.types[0].type.name}{(this.props.pokemon.types[1]!=undefined)?
-              ":"+this.props.pokemon.types[1].type.name:""}</div>
+          <div className="imagen"><img src={props.pokemon.sprites.front_default} 
+              onClick={props.onclick} alt="" /></div>
+          <div className="nombre">{props.pokemon.name}</div>
+          <div className="alturaPeso">Altura:{props.pokemon.height} Peso:{props.pokemon.weight}</div>
+          <div className="tipos">{props.pokemon.types[0].type.name}{(props.pokemon.types[1]!=undefined)?
+              ":"+props.pokemon.types[1].type.name:""}</div>
           <div className="ataques">
-            {this.props.pokemon.moves[0].move.name}&nbsp;
-            {(this.props.pokemon.moves[1])?this.props.pokemon.moves[1].move.name+"&nbsp;":""}
-            {(this.props.pokemon.moves[2])?this.props.pokemon.moves[2].move.name+"&nbsp;":""}
-            {(this.props.pokemon.moves[3])?this.props.pokemon.moves[3].move.name+"&nbsp;":""}
+            {props.pokemon.moves[0].move.name}&nbsp;
+            {(props.pokemon.moves[1])?props.pokemon.moves[1].move.name+"&nbsp;":""}
+            {(props.pokemon.moves[2])?props.pokemon.moves[2].move.name+"&nbsp;":""}
+            {(props.pokemon.moves[3])?props.pokemon.moves[3].move.name+"&nbsp;":""}
           </div>
         </div>
       );
-    }
+    
   }
 
-  module.exports = Pokedex;
+  module.exports = PokemonDetalles;

@@ -2,19 +2,11 @@ import React, { useState, useEffect } from 'react';
 import '../App.css';
 import PokemonEnLista from './PokemonEnLista'
 
-  const Busqueda = (props) =>{
-    const [results, setResults] = useState([]);
-    const [showResults, setShowResults] = useState([]);
-    const [texto,setTexto] = null;
+let texto="";
 
-    const filtroMostrar = (text)=>{
-     setTexto(text);
-     console.log(results)
-      let results = Object.assign([],results.results)
-      results = results.filter(filtroPokemon);
-      //setShowResults([])
-      setTimeout(()=>setShowResults(results),1)
-    }
+  const Busqueda = (props) =>{
+    const [results, setResults] = useState(null);
+    const [showResults, setShowResults] = useState([]);
 
     const filtroPokemon =(poke)=>{
       if(!texto || texto.length<=2) return false;
@@ -22,11 +14,21 @@ import PokemonEnLista from './PokemonEnLista'
       return poke.name.indexOf(texto)!==-1;
     }
 
-    useEffect(async()=>{
-      //if(results!==null) return;
-      const response = await fetch("https://pokeapi.co/api/v2/pokemon?limit=964");
-      const json = await response.json();
-      setResults({results:json});
+    const filtroMostrar = (text)=>{
+     texto=text;
+      let resultas = Object.assign([],results)
+      resultas = resultas.filter(filtroPokemon);
+      setShowResults([])
+      setTimeout(()=>setShowResults(resultas),1)
+    }
+
+    useEffect(()=>{
+      const retornaPokemons = async()=>{
+        const response = await fetch("https://pokeapi.co/api/v2/pokemon?limit=964");
+        const json = await response.json();
+        setResults(json.results);
+      }
+      retornaPokemons();
     },[]) 
 
     return (
@@ -35,10 +37,10 @@ import PokemonEnLista from './PokemonEnLista'
             filtroMostrar(ev.target.value);
           }} />
           {
-          // showResults.map(resp=>{
-          //   return (<PokemonEnLista onclick={props.onclick} pokemon={resp.url} />)
-          // })
-        }
+            showResults.map(resp=>{
+              return (<PokemonEnLista onclick={props.onclick} pokemon={resp.url} />)
+            })
+          }
         </div>
     )
   }
