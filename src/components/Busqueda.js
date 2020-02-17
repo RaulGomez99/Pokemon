@@ -10,7 +10,7 @@ let texto="";
 
     const filtroPokemon =(poke)=>{
       if(!texto || texto.length<=2) return false;
-      if(poke.name.indexOf(texto)!==-1)console.log(poke)
+      //if(poke.name.indexOf(texto)!==-1)console.log(poke)
       return poke.name.indexOf(texto)!==-1;
     }
 
@@ -18,16 +18,16 @@ let texto="";
      texto=text;
       let resultas = Object.assign([],results)
       resultas = resultas.filter(filtroPokemon);
-      setShowResults([])
-      setTimeout(()=>setShowResults(resultas),1)
+      setShowResults(resultas);
+    }
+
+    const retornaPokemons = async()=>{
+      const response = await fetch("https://pokeapi.co/api/v2/pokemon?limit=964");
+      const json = await response.json();
+      setResults(json.results);
     }
 
     useEffect(()=>{
-      const retornaPokemons = async()=>{
-        const response = await fetch("https://pokeapi.co/api/v2/pokemon?limit=964");
-        const json = await response.json();
-        setResults(json.results);
-      }
       retornaPokemons();
     },[]) 
 
@@ -38,7 +38,7 @@ let texto="";
           }} />
           {
             showResults.map(resp=>{
-              return (<PokemonEnLista onclick={props.onclick} pokemon={resp.url} />)
+              return (<PokemonEnLista key={resp.name} onclick={props.onclick} pokemon={resp.url} />)
             })
           }
         </div>

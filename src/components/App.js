@@ -11,6 +11,7 @@ const App = ()=> {
 
   //Funciones
   const onclick = (pokemon)=>{
+    //console.log(pokemon)
     setMostrarPokemon(!mostrarPokemon);
     setPokemon(pokemon);
   }
