@@ -43,13 +43,14 @@
 }*/
 .detallePokemon{
   display: grid;
-  width: 50vw;
+  width: 30vw;
   padding: 20px;
   border: 1px solid black;
   border-radius: 10px;
   text-align: center;
-  margin: 0 auto;
+  margin-left: 10px; 
   margin-top: 16vh;
+
 }
 
 .busqueda{
@@ -79,18 +80,41 @@
   font-size: large;
 }
 
-.ataques{
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-gap: 10px;
-}
 .ataque{
   border: 1px solid black;
-  border-radius: 10px;
+  border-radius: 5px;
   font-weight: bold;
+  cursor: pointer;
+  margin-top: 2px;
+  width:100%;
+  text-align: left;
 }
 
-.ataque h3{
-  font-size: medium;
-  font-weight: normal;
+.ataque:hover{
+  background-color: lightcyan;
 }
+
+
+.ataqueDetalle{
+  border: 1px solid blue;
+  position: fixed;
+  width: 40vw;
+  height: 80vh;
+  border-radius: 10px;
+  right: 10px;
+}
+
+.pp{
+  float: right;
+}
+
+.imagenes{
+  float:right;
+  margin-right: 1vw;
+}
+
+.ataqueNombre{
+  text-align: left;
+}
+
+

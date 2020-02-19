@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import '../App.css';
 import Pokedex from './Pokedex'
 import Busqueda from './Busqueda'
 import PokemonDetalles from './PokemonDetalles'
@@ -8,12 +7,18 @@ import AtaqueMostrarDetalles from './AtaqueMostrarDetalles'
 const App = ()=> {
   //Estados
   const [pokemon, setPokemon] = useState(null);
+  const [ataque, setAtaque] = useState(null);
   const [mostrarPokemon, setMostrarPokemon] = useState(true);
 
   //Funciones
   const onclick = (pokemon)=>{
     setMostrarPokemon(!mostrarPokemon);
     setPokemon(pokemon);
+  }
+
+  const onclickAtaque = (atack) =>{
+    console.log(atack)
+    setAtaque(atack);
   }
 
   const onclickVuelta = ()=>{
@@ -26,8 +31,8 @@ const App = ()=> {
     }else{
       return (
       <div className="content">
-        <PokemonDetalles onclick={onclick} pokemon={pokemon}/>
-        <AtaqueMostrarDetalles />
+        <AtaqueMostrarDetalles ataque={ataque}/>
+        <PokemonDetalles onclick={onclick} pokemon={pokemon} onclickAtaque={onclickAtaque}/>
       </div>
       )
     }
