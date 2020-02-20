@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import '../App.css';
+import '../css/Ataque.css';
 
 const Ataque = (props)=>{
     const [ataque,setAtaque] = useState({names:false});

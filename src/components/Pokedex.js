@@ -1,6 +1,6 @@
 import React from 'react';
 import titulo from '../img/pokeapi.png'
-import '../App.css';
+import '../css/Pokedex.css';
 
 const Pokedex = (props)=> {
     return (

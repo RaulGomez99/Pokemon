@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import '../App.css';
+import '../css/Busqueda.css';
 import PokemonEnLista from './PokemonEnLista'
 
 let texto="";

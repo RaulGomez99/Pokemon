@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import '../App.css';
+import '../css/PokemonEnLista.css';
 
 const PokemonEnLista = (props) => {
   const [pokemon,setPokemon] = useState({name:"",sprites:{front_default:""}});

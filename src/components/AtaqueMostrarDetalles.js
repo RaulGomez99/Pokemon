@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import '../App.css';
+import '../css/AtaqueMostrarDetalles.css';
 
 const AtaqueMostrarDetalle = (props) =>{
     const [ataque, setAtaque] = useState(null);
@@ -10,12 +10,17 @@ const AtaqueMostrarDetalle = (props) =>{
     if(ataque){
         return(
             <div className="ataqueDetalle">
-                {ataque.name}
+                {ataque.names[4].name}
+                {ataque.pp}
+                {ataque.flavor_text_entries[4].flavor_text}
+                <img src={`https://veekun.com/dex/media/damage-classes/${ataque.damage_class.name}.png`} className="tipoMovimiento" alt={ataque.damage_class.name}/>
+                    <img src={`https://veekun.com/dex/media/types/en/${ataque.type.name}.png`} className="tipoMovimiento" alt={ataque.type.name}/>
             </div>
         )
     }else{
         return(
             <div className="ataqueDetalle">
+                <h1>No hay ningún ataque seleccionado</h1>
             </div>
         ) 
     }
