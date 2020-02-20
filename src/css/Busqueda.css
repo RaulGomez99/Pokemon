@@ -1,0 +1,8 @@
+.busqueda{
+    width: 60vw;
+    margin: 0 auto;
+    margin-top: Calc(15vh + 10px);
+  }
+  .busqueda input{
+    width: 60vw;
+  }

@@ -1,0 +1,40 @@
+.detallePokemon{
+    display: grid;
+    width: 90vw;
+    padding: 20px;
+    border: 1px solid black;
+    border-radius: 10px;
+    margin-left: 3vw; 
+    margin-top: 16vh;
+  
+  }
+  .imagen img{
+    width: 17vw;
+    height: 35vh;
+    grid-area: imagen;
+  }
+
+  .nombre{
+    font-weight: bold;
+    font-size: 250%;
+    text-align: center;
+    grid-area: nombre;
+  }
+
+  .miniDatos{
+    grid-area: miniDatos;
+  }
+
+
+
+  .datos{
+    height: 40vh;
+    width: 50%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 33% 1fr 1fr;
+    grid-template-areas:  "imagen nombre"
+                          "imagen miniDatos"
+                          "imagen tipos";
+  }
+ 
