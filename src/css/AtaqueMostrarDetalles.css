@@ -1,9 +1,11 @@
-.ataqueDetalle{
-    border: 1px solid blue;
-    position: fixed;
-    width: 40vw;
-    height: 40vh;
-    border-radius: 10px;
-    right: 4vw;
-    margin-top: 10px;
-  }
+.ataqueDetalle {
+	border: 1px solid blue;
+	position: fixed;
+	width: 40vw;
+	height: 40vh;
+	border-radius: 10px;
+	right: 4vw;
+	margin-top: 1.4%;
+	background-color: white;
+	z-index: 2;
+}

@@ -10,9 +10,9 @@ const AtaqueMostrarDetalle = (props) =>{
     if(ataque){
         return(
             <div className="ataqueDetalle">
-                {ataque.names[4].name}
-                {ataque.pp}
-                {ataque.flavor_text_entries[4].flavor_text}
+                <p>{ataque.names[4].name}</p>
+                <p>{ataque.pp}</p>
+                <p>{ataque.flavor_text_entries[4].flavor_text}</p>
                 <img src={`https://veekun.com/dex/media/damage-classes/${ataque.damage_class.name}.png`} className="tipoMovimiento" alt={ataque.damage_class.name}/>
                     <img src={`https://veekun.com/dex/media/types/en/${ataque.type.name}.png`} className="tipoMovimiento" alt={ataque.type.name}/>
             </div>

@@ -1,0 +1,27 @@
+.ataque:hover{
+    background-color: lightcyan;
+  }
+  
+  .pp{
+    float: right;
+  }
+  
+  .imagenes{
+    float:right;
+    margin-right: 1vw;
+  }
+  
+  .ataqueNombre{
+    text-align: left;
+  }
+
+
+.ataque{
+    border: 1px solid black;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 2px;
+    width:100%;
+    text-align: left;
+  }

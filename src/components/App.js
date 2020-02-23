@@ -14,6 +14,7 @@ const App = ()=> {
   const onclick = (pokemon)=>{
     setMostrarPokemon(!mostrarPokemon);
     setPokemon(pokemon);
+    setAtaque(null);
   }
 
   const onclickAtaque = (atack) =>{
@@ -23,6 +24,7 @@ const App = ()=> {
 
   const onclickVuelta = ()=>{
     setMostrarPokemon(true);
+    setAtaque(null);
   }
 
   const opciones = () => {
